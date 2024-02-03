@@ -3,7 +3,9 @@
 namespace Database\Seeders;
 
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
+use App\Models\User;
 use Illuminate\Database\Seeder;
+use App\Classes\Users\UserConstants;
 
 class DatabaseSeeder extends Seeder
 {
@@ -12,11 +14,14 @@ class DatabaseSeeder extends Seeder
      */
     public function run(): void
     {
-        // \App\Models\User::factory(10)->create();
+        //seed 100 admin users
+        User::factory(100)->create([
+            'type' => UserConstants::USER_TYPE_ADMIN,
+        ]);
 
-        // \App\Models\User::factory()->create([
-        //     'name' => 'Test User',
-        //     'email' => 'test@example.com',
-        // ]);
+        //seed 10000 normal users
+        User::factory(10000)->create([
+            'type' => UserConstants::USER_TYPE_NORMAL,
+        ]);
     }
 }
