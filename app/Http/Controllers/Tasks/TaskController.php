@@ -6,6 +6,7 @@ use App\Services\Tasks\TaskService;
 use App\Services\Users\UserService;
 use App\Classes\Users\UserConstants;
 use App\Http\Controllers\Controller;
+use App\Http\Requests\TaskRequest;
 
 class TaskController extends Controller
 {
@@ -33,5 +34,13 @@ class TaskController extends Controller
             'users' => $users,
             'admins' => $admins,
         ]);
+    }
+
+    public function store(TaskRequest $request)
+    {
+        $validatedData = $request->validated();
+        $this->taskService->createTask($validatedData);
+
+        return redirect()->route('tasks.index');
     }
 }
