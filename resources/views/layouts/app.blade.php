@@ -22,13 +22,13 @@
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav">
                     <li class="nav-item">
-                        <a class="nav-link" href="/tasks/create">Create Task</a>
+                        <a class="nav-link" href="{{ route('tasks.create') }}">Create Task</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="/tasks">Task List</a>
+                        <a class="nav-link" href="{{ route('tasks.index') }}">All Tasks</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="/tasks/statistics">Statistics</a>
+                        <a class="nav-link" href="{{ route('statistics.index') }}">Statistics</a>
                     </li>
                 </ul>
             </div>
