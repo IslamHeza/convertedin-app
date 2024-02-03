@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Controllers\Statistics\StatisticController;
+use App\Http\Controllers\Tasks\TaskController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -14,5 +16,12 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return redirect()->route('tasks.index');
+});
+
+// Tasks
+Route::group(['prefix' => 'tasks'], function () {
+    Route::get('/', [TaskController::class, 'index'])->name('tasks.index');
+    Route::post('/store', [TaskController::class, 'store'])->name('tasks.store');
+    Route::get('/statistics', [StatisticController::class, 'index'])->name('statistics.index');
 });
